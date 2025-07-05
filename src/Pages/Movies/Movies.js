@@ -5,10 +5,11 @@ import SingleContent from '../../components/Singlecontent/Singlecontent';
 import CustomPagination from '../../components/Pagination/CustomPagination';
 import Genres from '../../components/genres';
 
+
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(0);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [genres, setGenres] = useState([]);

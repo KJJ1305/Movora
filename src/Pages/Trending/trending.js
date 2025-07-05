@@ -8,7 +8,7 @@ import CustomPagination from '../../components/Pagination/CustomPagination';
 const Trending = () => {
   const [trending, setTrending] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [, setPage] = useState(1);
   const location = useLocation();
 
   const fetchTrending = useCallback(async () => {
