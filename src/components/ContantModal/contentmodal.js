@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import { img_500, unavailable , unavailableLandscape } from '../../config/config';
 import './ContentModal.css';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import Carousel from '../Carousel/Carousel';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -126,7 +128,7 @@ export default function ContentModal({children, media_type, id}) {
                             {content.overview}
                           </span>
                               <div>
-
+                                <Carousel media_type={media_type} id={id}/>
                               </div>
                             <Button 
                             variant="contained"

@@ -1,60 +1,58 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Carousel.css";
+import React from 'react';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { useState, useEffect } from 'react';
+import './Carousel.css';
 
-const Carousel = ({ media_type, id }) => {
-  const [credits, setCredits] = useState();
+const handleDragStart = (e) => e.preventDefault();
 
-  const fetchCredits = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    );
-    setCredits(data);
+const Carousel = ({media_type, id}) => {
+
+  const [credit, setCredit] = useState([]);
+
+  const items = credit?.map((c) => (
+    <div className="carousel__item" onDragStart={handleDragStart} key={c.id}>
+      <img 
+        src={c.profile_path ? `https://image.tmdb.org/t/p/w500${c.profile_path}` : 'https://www.movienewz.com/img/films/poster-holder.jpg'} 
+        alt={c?.name}
+        className="carousel__img"
+      />
+      <b className="carousel__txt">{c?.name}</b>
+    </div>
+  ));
+
+  const responsive = {
+    0: {
+      items: 3,
+    },
+    512: {
+      items: 5,
+    },
+    1024: {
+      items: 7,
+    },
   };
 
-  useEffect(() => {
-    fetchCredits();
-    // eslint-disable-next-line
-  }, []);
 
-  const items = [];
+  const fetchData = async () => {
+    const data = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+    const content = await data.json();
+    console.log(content);
+    setCredit(content.cast);
+  };
 
-  credits &&
-    credits.cast &&
-    credits.cast.map((c) => {
-      c.profile_path &&
-        items.push({
-          id: c.id,
-          name: c.name,
-          image: c.profile_path,
-          character: c.character,
-        });
-    });
-
-  const handleDragStart = (e) => e.preventDefault();
+  useEffect(() => { 
+    fetchData();
+  }, [media_type, id]);
 
   return (
-    <div className="carousel">
-      <h2>Cast</h2>
-      <div className="carousel__inner">
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="carousel__item"
-            onDragStart={handleDragStart}
-            draggable={false}
-          >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${item.image}`}
-              alt={item.name}
-              className="carousel__img"
-            />
-            <b className="carousel__txt">{item.name}</b>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+    <AliceCarousel autoPlay responsive={responsive} 
+    mouseTracking 
+    infinite
+    disableDotsControls
+    disableButtonsControls
+    items={items} />
+  )
+}
 
-export default Carousel; 
+export default Carousel;
