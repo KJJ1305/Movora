@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { requests, fetchData } from '../../api/tmdb';
 import SingleContent from '../../components/Singlecontent/Singlecontent';
@@ -9,10 +9,9 @@ const Trending = () => {
   const [trending, setTrending] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [numOfPages, setNumOfPages] = useState(0);
   const location = useLocation();
 
-  const fetchTrending = async () => {
+  const fetchTrending = useCallback(async () => {
     setLoading(true);
     try {
       // Get page from URL or default to 1
@@ -26,17 +25,16 @@ const Trending = () => {
       
       if (data && data.results) {
         setTrending(data.results);
-        setNumOfPages(data.total_pages > 500 ? 500 : data.total_pages); // TMDB limits to 500 pages
       }
     } catch (error) {
       console.error('Error fetching trending data:', error);
     }
     setLoading(false);
-  };
+  }, [location.search]);
 
   useEffect(() => {
     fetchTrending();
-  }, [page, location.search]); // Re-fetch when page or URL search changes
+  }, [fetchTrending]);
 
   if (loading) {
     return <div>Loading trending movies...</div>;

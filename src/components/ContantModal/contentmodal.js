@@ -4,15 +4,12 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { img_500, unavailable , unavailableLandscape } from '../../config/config';
 import './ContentModal.css';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Carousel from '../Carousel/Carousel';
-
-
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -47,8 +44,7 @@ export default function ContentModal({children, media_type, id}) {
   const handleClose = () => setOpen(false);
   const [video, setVideo] = useState([])
 
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const data = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
     const content = await data.json();
     console.log('Content data:', content); // Debug log
@@ -56,9 +52,9 @@ export default function ContentModal({children, media_type, id}) {
     console.log('Media type:', media_type); // Debug media type
     console.log('ID:', id); // Debug ID
     setContent(content);
-  }
+  }, [media_type, id]);
 
-  const fetchVideo = async () => {
+  const fetchVideo = useCallback(async () => {
     try {
       const data = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
       const video = await data.json();
@@ -68,13 +64,12 @@ export default function ContentModal({children, media_type, id}) {
       console.error('Error fetching video:', error);
       setVideo(null);
     }
-  }
+  }, [media_type, id]);
 
   useEffect(() => {
     fetchData();
     fetchVideo();
-    }, [media_type, id]);
-
+  }, [fetchData, fetchVideo]);
 
   return (
     <>

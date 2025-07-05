@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { requests, fetchData } from '../../api/tmdb';
 import SingleContent from '../../components/Singlecontent/Singlecontent';
@@ -14,7 +14,7 @@ const Series = () => {
   const [genres, setGenres] = useState([]);
   const location = useLocation();
 
-  const fetchSeries = async () => {
+  const fetchSeries = useCallback(async () => {
     setLoading(true);
     try {
       // Get page from URL or default to 1
@@ -41,11 +41,11 @@ const Series = () => {
       console.error('Error fetching TV series data:', error);
     }
     setLoading(false);
-  };
+  }, [location.search, selectedGenres]);
 
   useEffect(() => {
     fetchSeries();
-  }, [page, location.search, selectedGenres]); // Re-fetch when page, URL search, or genres change
+  }, [fetchSeries]);
 
   if (loading) {
     return <div>Loading trending TV series...</div>;

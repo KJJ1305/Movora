@@ -1,7 +1,7 @@
 import React from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './Carousel.css';
 
 const handleDragStart = (e) => e.preventDefault();
@@ -33,17 +33,16 @@ const Carousel = ({media_type, id}) => {
     },
   };
 
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const data = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
     const content = await data.json();
     console.log(content);
     setCredit(content.cast);
-  };
+  }, [media_type, id]);
 
   useEffect(() => { 
     fetchData();
-  }, [media_type, id]);
+  }, [fetchData]);
 
   return (
     <AliceCarousel autoPlay responsive={responsive} 

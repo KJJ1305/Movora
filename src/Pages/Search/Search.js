@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TextField from '@mui/material/TextField';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Button } from '@mui/material';
@@ -26,7 +26,7 @@ const Search = () => {
     const [numOfPages, setNumOfPages] = useState(0);
     const [loading, setLoading] = useState(false);
 
-    const fetchSearch = async () => {
+    const fetchSearch = useCallback(async () => {
         if (!searchText) return;
         
         setLoading(true);
@@ -44,7 +44,7 @@ const Search = () => {
             console.error('Error fetching search results:', error);
         }
         setLoading(false);
-    };
+    }, [searchText, type, page]);
 
     useEffect(() => {
         if (searchText.trim()) {
@@ -53,7 +53,7 @@ const Search = () => {
             setContent([]);
             setNumOfPages(0);
         }
-    }, [type, page, searchText]);
+    }, [fetchSearch, searchText]);
 
     const handleSearch = () => {
         if (searchText.trim()) {
