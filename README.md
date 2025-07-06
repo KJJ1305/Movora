@@ -1,70 +1,167 @@
-# Getting Started with Create React App
+# 🎬 Movora - Movie & TV Show Discovery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive web application for discovering trending movies and TV shows, built with React and powered by The Movie Database (TMDb) API.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Trending Content**: Browse the latest trending movies and TV shows
+- **Detailed Information**: View comprehensive details including:
+  - Movie/TV show posters and backdrops
+  - Release dates and ratings
+  - Plot summaries and taglines
+  - Watch trailers directly on YouTube
+- **Interactive Modals**: Click on any movie/show to see detailed information in a sleek modal
+- **Responsive Design**: Optimized for both desktop and mobile viewing
+- **Search Functionality**: Find your favorite movies and shows
+- **Clean UI**: Modern, user-friendly interface with smooth animations
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Visit the live application: [Movora on Netlify](https://movora.netlify.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Built With
 
-### `npm test`
+- **React** - Frontend framework
+- **Material-UI (MUI)** - UI component library
+- **JavaScript (ES6+)** - Programming language
+- **CSS3** - Styling and animations
+- **TMDb API** - Movie and TV show data
+- **YouTube API** - Trailer integration
+- **Netlify** - Hosting and deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📋 Prerequisites
 
-### `npm run build`
+Before running this project, make sure you have:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v14 or higher)
+- npm or yarn package manager
+- TMDb API key (free registration at [themoviedb.org](https://www.themoviedb.org/))
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔧 Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/KJJ1305/Movora.git
+   cd Movora
+   ```
 
-### `npm run eject`
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   REACT_APP_API_KEY=your_tmdb_api_key_here
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Start the development server**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Open your browser**
+   
+   Navigate to `http://localhost:3000`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🏗️ Project Structure
 
-## Learn More
+```
+Movora/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── ContentModal/
+│   │   │   ├── ContentModal.js
+│   │   │   └── ContentModal.css
+│   │   └── ...
+│   ├── config/
+│   │   └── config.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── .env
+├── package.json
+└── README.md
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎯 Key Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ContentModal
+- Displays detailed movie/TV show information
+- Responsive design with different layouts for mobile and desktop
+- Integrated YouTube trailer player
+- Smooth fade transitions
 
-### Code Splitting
+### Movie/TV Cards
+- Grid layout for displaying content
+- Hover effects and interactive elements
+- Rating badges and release dates
+- Optimized image loading with fallbacks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔑 API Integration
 
-### Analyzing the Bundle Size
+The app uses The Movie Database (TMDb) API to fetch:
+- Trending movies and TV shows
+- Detailed content information
+- High-quality poster and backdrop images
+- YouTube trailer links
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📱 Responsive Design
 
-### Making a Progressive Web App
+- **Mobile-first approach**: Optimized for mobile devices
+- **Breakpoint at 835px**: Different layouts for mobile and desktop
+- **Flexible grid system**: Adapts to different screen sizes
+- **Touch-friendly interactions**: Optimized for mobile touch
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🎨 Styling
 
-### Advanced Configuration
+- **Custom CSS**: Tailored styling for unique look and feel
+- **Material-UI components**: Consistent design system
+- **Google Fonts**: Roboto font family for clean typography
+- **Smooth animations**: Fade transitions and hover effects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🚀 Deployment
 
-### Deployment
+The app is automatically deployed to Netlify. To deploy your own version:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Fork the repository
+2. Connect your GitHub account to Netlify
+3. Set up environment variables in Netlify dashboard
+4. Deploy with automatic builds from your main branch
 
-### `npm run build` fails to minify
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [The Movie Database (TMDb)](https://www.themoviedb.org/) for providing the movie and TV show data
+- [Material-UI](https://mui.com/) for the beautiful UI components
+- [React](https://reactjs.org/) for the powerful frontend framework
+
+## 📧 Contact
+
+**Developer**: KJJ1305  
+**GitHub**: [https://github.com/KJJ1305](https://github.com/KJJ1305)  
+**Project Link**: [https://github.com/KJJ1305/Movora](https://github.com/KJJ1305/Movora)
+
+---
+
+⭐ If you found this project helpful, please consider giving it a star on GitHub!
