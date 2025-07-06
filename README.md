@@ -10,9 +10,13 @@ A modern, responsive web application for discovering trending movies and TV show
   - Release dates and ratings
   - Plot summaries and taglines
   - Watch trailers directly on YouTube
+- **Cast Carousel**: Interactive carousel displaying movie/TV show cast members with photos and names
 - **Interactive Modals**: Click on any movie/show to see detailed information in a sleek modal
 - **Responsive Design**: Optimized for both desktop and mobile viewing
 - **Search Functionality**: Find your favorite movies and shows
+- **Genre Filtering**: Filter content by genres with interactive chip-based selection
+- **Pagination**: Navigate through pages with URL state management
+- **Bottom Navigation**: Mobile-first navigation with Material-UI icons
 - **Clean UI**: Modern, user-friendly interface with smooth animations
 
 ## 🚀 Live Demo
@@ -23,10 +27,12 @@ Visit the live application: [Movora on Netlify](https://movora.netlify.app/)
 
 - **React** - Frontend framework
 - **Material-UI (MUI)** - UI component library
+- **React Alice Carousel** - Smooth carousel component for cast display
 - **JavaScript (ES6+)** - Programming language
 - **CSS3** - Styling and animations
 - **TMDb API** - Movie and TV show data
 - **YouTube API** - Trailer integration
+- **React Router** - Client-side routing
 - **Netlify** - Hosting and deployment
 
 ## 📋 Prerequisites
@@ -75,19 +81,15 @@ Before running this project, make sure you have:
 ```
 Movora/
 ├── public/
-│   ├── index.html
-│   └── favicon.ico
 ├── src/
 │   ├── components/
-│   │   ├── ContentModal/
-│   │   │   ├── ContentModal.js
-│   │   │   └── ContentModal.css
-│   │   └── ...
+│   ├── Pages/
+│   ├── api/
 │   ├── config/
-│   │   └── config.js
 │   ├── App.js
 │   ├── App.css
-│   └── index.js
+│   ├── index.js
+│   └── index.css
 ├── .env
 ├── package.json
 └── README.md
@@ -96,16 +98,39 @@ Movora/
 ## 🎯 Key Components
 
 ### ContentModal
-- Displays detailed movie/TV show information
-- Responsive design with different layouts for mobile and desktop
-- Integrated YouTube trailer player
-- Smooth fade transitions
+- Displays detailed movie/TV show information in a modal
+- Responsive design with YouTube trailer integration
+- Shows poster, backdrop, plot, and cast carousel
 
-### Movie/TV Cards
+### Carousel Component
+- Displays cast members in a horizontal scrollable carousel
+- Responsive design with auto-play functionality
+- Shows actor photos and names
+
+### SingleContent (Movie/TV Cards)
 - Grid layout for displaying content
-- Hover effects and interactive elements
-- Rating badges and release dates
-- Optimized image loading with fallbacks
+- Rating badges and hover effects
+- Click to open detailed modal
+
+### Header Component
+- Branded header with "MOVORA 🎥"
+- Scrolls to top when clicked
+
+### Main Navigation
+- Bottom navigation bar with four sections
+- Material-UI icons for Trending, Movies, TV Series, and Search
+
+### Custom Pagination
+- Material-UI pagination with URL state management
+- Auto-scrolls to top when changing pages
+
+### Genres Component
+- Interactive genre filtering with chip-based UI
+- Add/remove genres with visual feedback
+
+### Search Functionality
+- Real-time search across movies and TV shows
+- Displays results in card format
 
 ## 🔑 API Integration
 
