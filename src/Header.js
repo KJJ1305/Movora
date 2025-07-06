@@ -2,8 +2,11 @@ import React from 'react';
 
 function Header() {
   return (
+    
     <header>
-      <span className="header">MOVORA</span>
+      <div className="header">
+        <span onClick={() => window.scroll(0, 0)} className="header">MOVORA</span>
+      </div>
     </header>
   );
 }

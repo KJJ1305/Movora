@@ -4,19 +4,113 @@
     position: fixed;
     display: flex;
     justify-content: center;
-    text-transform: uppercase;
+    align-items: center;
     background-color: #39445a;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Orbitron", sans-serif; /* Modern, futuristic - perfect for movies */
     font-size: 5vw;
-    padding-bottom: 15px;
+    padding: 15px 20px;
     box-shadow: 0px 1px 5px black;
     color: white;
     z-index: 100;
+}
+
+.header-text {
+    cursor: pointer;
+    font-family: "Righteous", sans-serif; /* Modern, futuristic - perfect for movies */
+    font-size: 5vw;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Other great font options for MOVORA header:
+   - "Audiowide" - Futuristic, tech-savvy
+   - "Rajdhani" - Modern, clean, professional
+   - "Exo 2" - Contemporary, versatile
+   - "Righteous" - Bold, impactful
+   - "Montserrat" - Clean, modern (current)
+*/
+
+.myname{
+    position: absolute;
+    padding: 10px 20px;
+    border-radius: 10px;
+    left: 20px;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    font-size: 2vw;
+    font-weight: bold;
+    font-family: "Dancing Script", cursive; 
+    text-align: left;
+}
+
+.myname:hover{
+    background-color: rgba(255, 255, 255, 0.099);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}   
+
+.myname:active{
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.gitlink{
+    position: absolute;
+    right: 60px;
+    color: #ffffff;
+    background-color: transparent;
+    margin-right: 30px;
+    text-decoration: none;
+    font-size: 1vw;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gitlink:hover{
+    background-color: rgba(255, 255, 255, 0.099);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.gitlink:active{
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+
+.gitlink img{
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 1000px) {
     .header{
         padding-top: 15px;
         font-size: 6.4vw;
+    }
+    
+    .header-text {
+        font-size: 6.4vw;
+    }
+    
+    .myname {
+        font-size: 2vw;
+        left: 15px;
+    }
+
+    .gitlink{
+        right: 15px;
     }
 }
